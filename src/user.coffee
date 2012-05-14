@@ -1,4 +1,4 @@
-## represents a users of the system
+## represents a user of the system
 class User
   userId: 0
   username: ''
