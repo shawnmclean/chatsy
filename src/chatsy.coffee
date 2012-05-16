@@ -1,5 +1,5 @@
 
 exports.Manager = require('./manager')
 
-exports.chatsy = (socket, options) ->
+exports.start = (socket, options) ->
   new exports.Manager(socket, options)
