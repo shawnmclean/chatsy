@@ -1,5 +1,5 @@
 
 exports.Manager = require('./manager')
 
-exports.start = (socket, options) ->
-  new exports.Manager(socket, options)
+exports.start = (io, options) ->
+  new exports.Manager(io, options)

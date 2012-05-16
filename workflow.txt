@@ -1,0 +1,23 @@
+pre. When user connects to server, add to list of online users
+1. User request to join room (joinRoom) (server checks if user has permission to join the room)
+2. Add user from global list to list of users in room session.(Bind user disconnect event to room diconnect event)
+3. Emit roomJoined event to the user.
+4. Emit userJoined event to all other users in the room.
+5. On user disconnect, emit userDisconnect to all users.
+6. On messageSend (roomId, userId and message) check permissions and ensure the user is in the room then emit messageSend to all
+users in the room.
+7. On userStatusChanged, emit it to all users in the room.
+8. On getAllUsersInRoom, emit all users in room to the request
+
+
+Models.
+User
+	FirstName
+	LastName
+	UserId
+	Status
+
+Global User list.
+Rooms
+	List of users
+	RoomId
