@@ -8,13 +8,14 @@ class Manager
   rooms: []
   
   constructor: (@io, @options) ->
-    self = @this
+    self = @
     ##joining the room
-    @io.sockets.on 'connection', (socket) ->
+    @io.of('/chat').on 'connection', (socket) ->
       socket.on 'joinRoom', self.joinRoom
   
   ##called when a user requests to join a room
   joinRoom: (data) ->
-
+    console.log "Room: ", data
+    
 ##expose the Manager class
 exports = module.exports = Manager    
