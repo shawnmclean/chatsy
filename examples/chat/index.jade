@@ -4,24 +4,19 @@ html
     script(src='/socket.io/socket.io.js')
     script
       // socket.io specific code
-      var socket = io.connect('http://127.0.0.1:3000/chat');
+      var socket = io.connect('http://127.0.0.1:4000/chat');
 
-      socket.on('connect', function () {
-        socket.emit('joinRoom',{roomId:1});
+      socket.socket.on('error', function (reason){
+        console.error('Unable to connect Socket.IO', reason);
       });
 
+      socket.on('connect', function () {
+        console.log('connected');
+        socket.emit('joinRoom',{roomId:1});
+      });
+      
+      socket.on('roomJoined', function () {
+        console.log('room Joined');
+      });
+      
   body
-    #chat
-      #nickname
-        form.wrap#set-nickname
-          p Please type in your nickname and press enter.
-          input#nick
-          p#nickname-err Nickname already in use
-      #connecting
-        .wrap Connecting to socket.io server
-      #messages
-        #nicknames
-        #lines
-      form#send-message
-        input#message
-        button Send

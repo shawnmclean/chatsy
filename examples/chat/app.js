@@ -1,7 +1,10 @@
 var express = require('express')
 , app = express.createServer()
 , io = require('socket.io').listen(app)
-, chatsy = require('../../lib/chatsy').start(io, null);
+, chatsy = require('../../lib/chatsy').start(io, {
+	AuthenticationService: null
+});
+
 
 
 app.configure(function () {
@@ -21,7 +24,7 @@ app.get('/', function (req, res) {
  * App listen.
  */
 
-app.listen(3000, function () {
+app.listen(4000, function () {
   var addr = app.address();
   console.log('   app listening on http://' + addr.address + ':' + addr.port);
 });
